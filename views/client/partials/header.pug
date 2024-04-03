@@ -1,0 +1,17 @@
+header.navbar
+    .navbar-brand
+        img(src='https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg', alt='Your Logo')
+    nav.navbar-nav
+        ul.nav-list
+            li.nav-item
+                a.nav-link(href='/') Home
+            li.nav-item
+                a.nav-link(href='/watch') Movies
+            if user
+                li.nav-item
+                    i.fa-solid.fa-right-from-bracket.logout
+            else 
+                li.nav-item
+                    a.nav-link(href='/account/login') Login
+
+        form.d-none.logoutForm(method="POST" action = "/account/logout")

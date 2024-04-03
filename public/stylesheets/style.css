@@ -1,0 +1,69 @@
+html {
+    user-select: none;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #141414;
+    padding: 10px 20px;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+.logout:hover {
+    color: red;
+    cursor: pointer;
+}
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.nav-list .nav-item {
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+}
+
+.account-settings {
+    color: white;
+    text-decoration: none;
+}
+
+.carousel-item img {
+    height: calc(100vh - 75px);
+    object-fit: cover;
+}
+
+.button-slider {
+    padding: 5px 20px;
+    margin: 15px;
+    border: none;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}

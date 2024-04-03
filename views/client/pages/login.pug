@@ -1,0 +1,84 @@
+html
+    head 
+        link(rel="stylesheet", href="stylesheets/login.css")
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
+        style.
+            body {
+                user-select: none;
+                background-image: url("/images/login.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #141414;
+                padding: 10px 20px;
+            }
+
+            .navbar-brand img {
+                height: 40px;
+                margin: 30px;
+            }
+            form {
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 20px;
+                border-radius: 10px;
+                margin: 0 auto;
+                width: 30%;
+                height: 85%;
+                margin-top: 0%;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .form-group.row {
+                width : 70%;
+            }
+            .title {
+                margin-bottom: 20px;
+                font-size: 30px;
+                font-weight: bold;
+            }
+            #inputEmail3,
+            #inputPassword3 {
+                background-color: transparent;
+                height: 50px;
+            }
+            
+            
+    body
+        .login 
+            .navbar-brand
+                a(href='/')
+                    img(src='https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg', alt='Your Logo')
+            form(method='POST', action=`/account/login`)
+                h1.title SIGN IN
+                .form-group.row
+                    label.col-sm-2.col-form-label(for='inputEmail3' name = "email") Email
+                    .col-sm-10
+                    input#inputEmail3.form-control(type='email' placeholder='Email' name = "email")
+                .form-group.row
+                    label.col-sm-2.col-form-label(for='inputPassword3' ) Password
+                    .col-sm-10
+                    input#inputPassword3.form-control(type='password' placeholder='Password' name = "password")
+                .form-group.row
+                    .col-sm-10
+                        .form-check
+                            input#gridCheck1.form-check-input(type='checkbox')
+                            label.form-check-label(for='gridCheck1') Remember me
+                .form-group.row
+                    button.btn#login(type='submit', style='width: 100%; height: 50px; background-color: #e50914; color: white; font-weight: bold') Sign in
+                p(style='color: rgba(255,255,255,0.5)') OR
+                .form-group.row
+                    button.btn#register(style='width: 100%; height: 50px; background-color: #423d3e; color: white; font-weight: bold') Register
+                a(href="/password/forgot" style='color: white; text-decoration: none;' ) Forgot password?
+        form.d-none#formSubmit(method="GET" action = `http://localhost:3000/account/`)
+
+
+        script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
+        script(src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js", integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", crossorigin="anonymous")
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js", integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", crossorigin="anonymous")
+        script(src="/js/login.js")

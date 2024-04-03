@@ -1,0 +1,16 @@
+body {
+    background-image: url("images/login.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #141414;
+    padding: 10px 20px;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
