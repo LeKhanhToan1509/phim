@@ -1,4 +1,4 @@
-const Film = require("../../models/Film.model");
+const Film = require("../../models/film.model");
 
 module.exports.index = async (req, res) => {
     try {
