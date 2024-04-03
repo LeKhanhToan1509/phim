@@ -12,5 +12,5 @@ const accountSchema = new mongoose.Schema({
     delete: { type: Boolean, default: false },
 });
 
-const account = mongoose.model("test", accountSchema, "accounts");
-module.exports = account;
+const Account = mongoose.model("Account", accountSchema, "accounts");
+module.exports = Account;
