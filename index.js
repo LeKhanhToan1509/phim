@@ -10,10 +10,8 @@ app.use(bodyParser.json());
 
 app.use(methodOverride("_method"));
 app.use(cookieParser());
-// Your route requires
 const Route = require("./routes/client/index.route");
 
-// Database and system configuration
 const port = process.env.PORT;
 const connect = require("./config/database.js");
 connect.connection();
