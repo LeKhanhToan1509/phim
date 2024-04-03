@@ -21,3 +21,4 @@ logout.addEventListener("click", (e) => {
     e.preventDefault();
     logoutForm.submit();
 });
+
