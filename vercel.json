@@ -1,12 +1,5 @@
 { 
     "version": 2, 
-    "rewrites": 
-    [
-        { 
-            "source": "/(.*)", 
-            "destination": "/api" 
-        }
-    ],
     "builds" : [
         {
             "src": "index.js",
@@ -17,6 +10,13 @@
         {
             "src": "/(.*)",
             "dest": "index.js"
+        }
+    ],
+    "rewrites": 
+    [
+        { 
+            "source": "/(.*)", 
+            "destination": "/api" 
         }
     ]
 }
