@@ -20,7 +20,7 @@ module.exports.postLogin = async (req, res) => {
         }
     } catch (error) {
         console.error("Login error:", error);
-        res.status(500).send("Server error occurred");
+        res.redirect("/login?error=Server error occurred");
     }
 };
 
