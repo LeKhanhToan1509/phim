@@ -1,4 +1,4 @@
-const accountModel = require("../models/account.model");
+const account = require("../models/account.model");
 
 module.exports.requireAuth = async (req, res, next) => {
     try {
@@ -6,7 +6,7 @@ module.exports.requireAuth = async (req, res, next) => {
             return res.redirect(`/account/login`);
         }
         const token = req.cookies.token;
-        const user = await accountModel
+        const user = await account
             .findOne({ token: token })
             .select("-password");
         if (!user) {
@@ -17,7 +17,6 @@ module.exports.requireAuth = async (req, res, next) => {
         next();
     } catch (error) {
         console.error(error);
-        // Redirect to login page with an error message
         res.redirect("/account/login?error=Server error occurred");
     }
 };

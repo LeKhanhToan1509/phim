@@ -1,4 +1,4 @@
-const accountModel = require("../../models/account.model");
+const account = require("../../models/account.model");
 
 module.exports.login = (req, res) => {
     res.render("client/pages/login.pug");
@@ -8,7 +8,7 @@ module.exports.postLogin = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await accountModel.findOne({
+        const user = await account.findOne({
             email: email,
             password: password,
         });
@@ -35,7 +35,7 @@ module.exports.postRegister = async (req, res) => {
     });
 };
 module.exports.userRegister = async (req, res) => {
-    const user = new accountModel({ ...req.body });
+    const user = new account({ ...req.body });
     await user.save();
     res.redirect("/account/register/password/step2");
 };
