@@ -1,46 +1,59 @@
+const bcrypt = require("bcryptjs");
 const account = require("../../models/Account.model.js");
+
+const asyncHandler = (fn) => (req, res, next) =>
+    Promise.resolve(fn(req, res, next)).catch(next);
+
+const sendResponse = (res, status, url, message) => {
+    res.status(status).redirect(
+        url + "?message=" + encodeURIComponent(message)
+    );
+};
 
 module.exports.login = (req, res) => {
     res.render("client/pages/login.pug");
 };
 
-module.exports.postLogin = async (req, res) => {
+module.exports.postLogin = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await account.findOne({
-            email: email,
-            password: password,
-        });
-        if (user) {
+        const user = await account.findOne({ email });
+        if (user && (await bcrypt.compare(password, user.password))) {
             res.cookie("token", user.token, { httpOnly: true });
             res.redirect(`/`);
         } else {
-            res.status(401).redirect("/login");
+            sendResponse(
+                res,
+                401,
+                "/login",
+                "Your login details are incorrect"
+            );
         }
     } catch (error) {
         console.error("Login error:", error);
-        res.redirect("/login?error=Server error occurred");
+        sendResponse(res, 500, "/login", "Server error occurred");
     }
-};
+});
 
 module.exports.register = (req, res) => {
     res.render("client/pages/register.pug");
 };
 
-module.exports.postRegister = async (req, res) => {
+module.exports.postRegister = asyncHandler(async (req, res) => {
     const email = req.query.email;
-    res.render("client/pages/register2.pug", {
-        email: email,
-    });
-};
-module.exports.userRegister = async (req, res) => {
-    const user = new account({ ...req.body });
+    res.render("client/pages/register2.pug", { email });
+});
+
+module.exports.userRegister = asyncHandler(async (req, res) => {
+    const { password, ...otherUserData } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 12);
+    const user = new account({ ...otherUserData, password: hashedPassword });
     await user.save();
     res.redirect("/account/register/password/step2");
-};
+});
 
-module.exports.step2 = async (req, res) => {
+module.exports.step2 = (req, res) => {
     res.render("client/pages/step2.pug");
 };
 
