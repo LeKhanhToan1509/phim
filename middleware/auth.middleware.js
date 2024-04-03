@@ -17,6 +17,7 @@ module.exports.requireAuth = async (req, res, next) => {
         next();
     } catch (error) {
         console.error(error);
-        res.status(500).send("An internal error occurred");
+        // Redirect to login page with an error message
+        res.redirect("/account/login?error=Server error occurred");
     }
 };
