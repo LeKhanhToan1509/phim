@@ -1,4 +1,4 @@
-const account = require("../../models/account.model");
+const account = require("../../models/account.model.js");
 
 module.exports.login = (req, res) => {
     res.render("client/pages/login.pug");
