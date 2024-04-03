@@ -1,9 +1,9 @@
-const Film = require("../../models/film.model");
+const film = require("../../models/film.model");
 
 module.exports.index = async (req, res) => {
     try {
-        const film = await Film.find({}).skip(0).limit(5);
-        const allFilms = await Film.find({}).skip(5).limit(100);
+        const film = await film.find({}).skip(0).limit(5);
+        const allFilms = await film.find({}).skip(5).limit(100);
 
         res.render("client/pages/home.pug", {
             films: film,

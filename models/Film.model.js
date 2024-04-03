@@ -25,5 +25,5 @@ const filmSchema = new mongoose.Schema(
     }
 );
 
-const Film = mongoose.model("Film", filmSchema, "films");
-module.exports = Film;
+const film = mongoose.model("Film", filmSchema, "films");
+module.exports = this.findByIdAndDeleteilm;
