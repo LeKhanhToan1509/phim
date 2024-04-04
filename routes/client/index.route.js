@@ -1,8 +1,8 @@
 const HomeRoutes = require("./home.route");
 const AccountRoutes = require("./account.route");
-const introduceRoutes = require("./introduce.route");
+const WatchRoutes = require("./watch.route");
 module.exports = (app) => {
     app.use("/", HomeRoutes);
     app.use("/account", AccountRoutes);
-    app.use("/introduce", introduceRoutes);
+    app.use("/watch", WatchRoutes);
 };

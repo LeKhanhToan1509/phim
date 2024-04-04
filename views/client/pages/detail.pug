@@ -1,4 +1,17 @@
 extends ../layouts/default.pug
 
 block main 
-    
+    body
+        .box
+            link(rel='stylesheet', href='/stylesheets/detail.css')
+            .embed-responsive.embed-responsive-16by9.video
+                iframe.centered-iframe.embed-responsive-item(src=movie.VideoLink allowfullscreen='')
+            .movie-info
+                .img
+                    img(src=movie.ImageSrc alt='Movie Poster' class='movie-poster')
+                .description
+                    h1 #{movie.Name}
+                    p.blur #{movie.engName}
+                    p Thời lượng : #{movie.Runtime}
+                    p Quốc gia : #{movie.Country}
+                    p #{movie.Description}

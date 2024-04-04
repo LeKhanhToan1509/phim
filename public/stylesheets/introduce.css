@@ -26,12 +26,12 @@ main {
 }
 
 .thumbTitle {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 14px;
     font-weight: 600;
     margin: 0 4% 12px;
     color: white;
-    font-weight: 900;
+    font-weight: 700;
     font-style: bold;
     margin-bottom: 40px;
 }
@@ -57,7 +57,9 @@ main {
 
 .nameMovie {
     margin-top: 20px;
+    margin-bottom: 10px;
     font-size: 16px;
+    padding: 3px;
     line-height: 14px;
     font-weight: 500;
     color: white;

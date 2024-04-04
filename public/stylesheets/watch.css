@@ -1,0 +1,48 @@
+body {
+    color: white;
+}
+.movies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.title {
+    color: white;
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+.content {
+    color: white;
+    font-size: 1em;
+    text-align: center;
+    margin-top: 15px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.searchForm {
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 45px;
+}
+
+.form-control {
+    flex-grow: 1;
+}
+.form-control {
+    background-color: transparent;
+    color: white;
+}
+
+.form-control:focus {
+    outline: none;
+    background-color: transparent;
+    color: white;
+}
