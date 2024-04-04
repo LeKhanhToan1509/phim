@@ -3,7 +3,6 @@ extends ../layouts/default.pug
 block main 
     body
         input#id.d-none(type='text', name='movieId', value=`${movie._id}` data-id = `${movie._id}`)
-        input#like.d-none(type='text', name='like', value=`${movie.Like}` data-like = `${movie.Like}`)
         .box
             link(rel='stylesheet', href='/stylesheets/detail.css')
             .embed-responsive.embed-responsive-16by9.video
@@ -12,10 +11,12 @@ block main
                 .img
                     img(src=movie.ImageSrc alt='Movie Poster' class='movie-poster')
                     button.btn.btn-danger.like(type='button')
-                        if movie.Like == false
-                            i.fa-regular.fa-heart
-                        else 
+                        if user.like.includes(movie._id)
+                            input#like(type='hidden', name='like', value='true')
                             i.fa-solid.fa-heart
+                        else 
+                            input#like(type='hidden', name='like', value='false')
+                            i.fa-regular.fa-heart
 
                 .description
                     h1 #{movie.Name}

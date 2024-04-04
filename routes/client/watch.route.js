@@ -4,8 +4,8 @@ const middleware = require("../../controller/middleware/auth.middleware");
 
 router.get("/", middleware.requireAuth, watchController.index);
 router.get("/detail/:id", middleware.requireAuth, watchController.watchFilm);
-router.patch(
-    "/changeLike/:Like/:id",
+router.post(
+    "/changeLike/:id",
     middleware.requireAuth,
     watchController.likeChange
 );

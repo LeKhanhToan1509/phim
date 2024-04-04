@@ -10,19 +10,26 @@ module.exports.index = async (req, res) => {
         "660e353739ba78d97a70a756",
         "660e360739ba78d97a71dc68",
     ];
+    const likeMovies = res.locals.user.like;
+    console.log(likeMovies);
+    const favouriteMovies = await Film.find({
+        _id: { $in: likeMovies },
+    });
+    console.log(favouriteMovies);
     const moviePromises = genres.map((genre) => getMoviesByGenre(genre));
-    const favouriteMovies = await Film.find({ Like: true });
     const initialFilms = await Film.find({}).skip(0).limit(5);
     const [actionMovies, loveMovies, honorMovies] = await Promise.all(
         moviePromises
     );
-    const LastWatch = await Film.find({}).sort({ LastWatch: -1 }).limit(10);
+    const lastWatch = await Film.find({
+        _id: { $in: res.locals.user.lastWatch },
+    });
     res.render("client/pages/home.pug", {
         loveMovies: loveMovies,
         actionMovies: actionMovies,
         favouriteMovies: favouriteMovies,
         films: initialFilms,
         honorMovies: honorMovies,
-        lastWatch: LastWatch,
+        lastWatch: lastWatch,
     });
 };

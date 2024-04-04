@@ -30,7 +30,9 @@ block main
     h1.separate Watch your favorite movies
     
     body
+        - var check = 0
         if  favouriteMovies.length > 0
+            - check = 1
             main
                 section.thumbSection
                     h2.thumbTitle Favorite Movies
@@ -42,6 +44,7 @@ block main
                                         img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
                                     p.nameMovie #{film.Name}
         if lastWatch.length > 0
+            -check = 1
             main
                 section.thumbSection
                     h2.thumbTitle Mới xem gần đây
@@ -52,37 +55,7 @@ block main
                                     a.thumbTile(href=`/watch/detail/${film._id}`)
                                         img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
                                     p.nameMovie #{film.Name}    
-        main
-            section.thumbSection
-                h2.thumbTitle Action Movies
-                .thumbTiles.swiper-container
-                    .swiper-wrapper
-                        each film, index in actionMovies
-                            .swiper-slide
-                                a.thumbTile(href=`/watch/detail/${film._id}`)
-                                    img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
-                                p.nameMovie #{film.Name}
-        .separator
-        main
-            section.thumbSection
-                h2.thumbTitle Romantic Movies
-                .thumbTiles.swiper-container
-                    .swiper-wrapper
-                        each film, index in loveMovies
-                            .swiper-slide
-                                a.thumbTile(href=`/watch/detail/${film._id}`)
-                                    img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
-                                p.nameMovie #{film.Name}
-        .separator
-        main
-            section.thumbSection
-                h2.thumbTitle Hornor Movies
-                .thumbTiles.swiper-container
-                    .swiper-wrapper
-                        each film, index in honorMovies
-                            .swiper-slide
-                                a.thumbTile(href=`/watch/detail/${film._id}`)
-                                    img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
-                                p.nameMovie #{film.Name}
+        
+        
         
     

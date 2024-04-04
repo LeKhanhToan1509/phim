@@ -61,7 +61,6 @@ module.exports.watchFilm = async (req, res) => {
     if (!movie) {
         return res.status(404).send("Movie not found");
     }
-    movie.LastWatch = new Date();
     await movie.save();
     const arr = movie.Sgeneros;
     const name = [];
@@ -70,6 +69,9 @@ module.exports.watchFilm = async (req, res) => {
         const genre = await Category.findById(arr[i]);
         name[i] = genre.name;
     }
+    res.locals.user.lastWatch.push(movie._id);
+    res.locals.user.lastWatch = res.locals.user.lastWatch.slice(-10);
+    await res.locals.user.save();
 
     let movies = await Film.find({})
         .limit(60)
@@ -85,11 +87,16 @@ module.exports.watchFilm = async (req, res) => {
 
 module.exports.likeChange = async (req, res) => {
     const movie = await Film.findById(req.params.id);
-    const like = req.params.Like === "true" ? false : true;
-    if (!movie) {
-        return res.status(404).send("Movie not found");
+    let liked;
+    if (res.locals.user.like.includes(movie._id)) {
+        res.locals.user.like = res.locals.user.like.filter(
+            (id) => id != movie._id
+        );
+        liked = false;
+    } else {
+        res.locals.user.like.push(movie._id);
+        liked = true;
     }
-    movie.Like = like;
-    await movie.save();
-    res.redirect(`back`);
+    await res.locals.user.save();
+    res.json({ liked: liked });
 };
