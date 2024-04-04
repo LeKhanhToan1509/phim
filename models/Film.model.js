@@ -19,6 +19,7 @@ const filmSchema = new mongoose.Schema(
             default: false,
         },
         deleteAt: Date,
+        LastWatch: Date,
     },
     {
         timestamps: true,

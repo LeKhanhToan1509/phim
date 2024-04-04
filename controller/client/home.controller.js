@@ -13,16 +13,16 @@ module.exports.index = async (req, res) => {
     const moviePromises = genres.map((genre) => getMoviesByGenre(genre));
     const favouriteMovies = await Film.find({ Like: true });
     const initialFilms = await Film.find({}).skip(0).limit(5);
-
     const [actionMovies, loveMovies, honorMovies] = await Promise.all(
         moviePromises
     );
-
+    const LastWatch = await Film.find({}).sort({ LastWatch: -1 }).limit(10);
     res.render("client/pages/home.pug", {
         loveMovies: loveMovies,
         actionMovies: actionMovies,
         favouriteMovies: favouriteMovies,
         films: initialFilms,
         honorMovies: honorMovies,
+        lastWatch: LastWatch,
     });
 };

@@ -61,6 +61,8 @@ module.exports.watchFilm = async (req, res) => {
     if (!movie) {
         return res.status(404).send("Movie not found");
     }
+    movie.LastWatch = new Date();
+    await movie.save();
     const arr = movie.Sgeneros;
     const name = [];
     const relative = await Film.find({ Sgeneros: { $in: arr } }).limit(30);
