@@ -12,6 +12,27 @@ block main
                 .description
                     h1 #{movie.Name}
                     p.blur #{movie.engName}
+                    p Thể loại : #{name}
                     p Thời lượng : #{movie.Runtime}
                     p Quốc gia : #{movie.Country}
-                    p #{movie.Description}
+                    p Mô tả : #{movie.Description}
+        main
+            section.thumbSection
+                h2.thumbTitle Relative Movies
+                .thumbTiles.swiper-container
+                    .swiper-wrapper
+                        each film, index in relative
+                            .swiper-slide
+                                a.thumbTile(href=`/watch/detail/${film._id}`)
+                                    img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
+                                p.nameMovie #{film.Name}
+        main
+            section.thumbSection
+                h2.thumbTitle Có thể bạn sẽ thích
+                .thumbTiles.swiper-container
+                    .swiper-wrapper
+                        each film, index in movies
+                            .swiper-slide
+                                a.thumbTile(href=`/watch/detail/${film._id}`)
+                                    img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
+                                p.nameMovie #{film.Name}

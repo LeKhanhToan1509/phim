@@ -11,10 +11,9 @@ module.exports.index = async (req, res) => {
         "660e360739ba78d97a71dc68",
     ];
     const moviePromises = genres.map((genre) => getMoviesByGenre(genre));
-    const [favouriteMovies, initialFilms] = await Promise.all([
-        Film.find({ Like: true }),
-        Film.find({}).skip(0).limit(5),
-    ]);
+    const favouriteMovies = await Film.find({ Like: true });
+    const initialFilms = await Film.find({}).skip(0).limit(5);
+
     const [actionMovies, loveMovies, honorMovies] = await Promise.all(
         moviePromises
     );

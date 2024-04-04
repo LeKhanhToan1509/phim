@@ -2,7 +2,6 @@ const Film = require("../../models/Film.model");
 const Fuse = require("fuse.js");
 const Category = require("../../models/Category.model");
 
-
 async function getMoviesByGenre(genreId) {
     return Film.find({ Sgeneros: { $in: [genreId] } }).limit(60);
 }
@@ -14,7 +13,7 @@ module.exports.index = async (req, res) => {
             keys: ["Name"],
         };
         const fuse = new Fuse(movies, options);
-            
+
         if (req.query.title) {
             const results = fuse.search(req.query.title);
             movies = results.map((result) => result.item);
@@ -63,8 +62,22 @@ module.exports.watchFilm = async (req, res) => {
     if (!movie) {
         return res.status(404).send("Movie not found");
     }
-    console.log(movie.Sgeneros);
+    const arr = movie.Sgeneros;
+    const name = [];
+    const relative = await Film.find({ Sgeneros: { $in: arr } }).limit(30);
+    for (let i = 0; i < arr.length; i++) {
+        const genre = await Category.findById(arr[i]);
+        name[i] = genre.name;
+    }
+
+    let movies = await Film.find({})
+        .limit(60)
+        .skip(Math.floor(Math.random() * 100));
+
     res.render("client/pages/detail.pug", {
         movie,
+        name,
+        relative,
+        movies,
     });
 };
