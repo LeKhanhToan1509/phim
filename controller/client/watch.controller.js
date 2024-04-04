@@ -28,7 +28,6 @@ module.exports.index = async (req, res) => {
             "660e36b439ba78d97a72d6c3",
             "660e376f39ba78d97a73db18",
         ];
-
         const moviePromises = genres.map((genre) => getMoviesByGenre(genre));
         const [
             actionMovies,
@@ -80,4 +79,15 @@ module.exports.watchFilm = async (req, res) => {
         relative,
         movies,
     });
+};
+
+module.exports.likeChange = async (req, res) => {
+    const movie = await Film.findById(req.params.id);
+    const like = req.params.Like === "true" ? false : true;
+    if (!movie) {
+        return res.status(404).send("Movie not found");
+    }
+    movie.Like = like;
+    await movie.save();
+    res.redirect(`back`);
 };

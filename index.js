@@ -1,14 +1,13 @@
 require("dotenv").config();
-const express = require("express");
-const methodOverride = require("method-override");
-const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const express = require("express");
 const app = express();
-
+const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 app.use(methodOverride("_method"));
+
 app.use(cookieParser());
 const Route = require("./routes/client/index.route");
 

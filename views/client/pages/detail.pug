@@ -2,6 +2,8 @@ extends ../layouts/default.pug
 
 block main 
     body
+        input#id.d-none(type='text', name='movieId', value=`${movie._id}` data-id = `${movie._id}`)
+        input#like.d-none(type='text', name='like', value=`${movie.Like}` data-like = `${movie.Like}`)
         .box
             link(rel='stylesheet', href='/stylesheets/detail.css')
             .embed-responsive.embed-responsive-16by9.video
@@ -9,6 +11,12 @@ block main
             .movie-info
                 .img
                     img(src=movie.ImageSrc alt='Movie Poster' class='movie-poster')
+                    button.btn.btn-danger.like(type='button')
+                        if movie.Like == false
+                            i.fa-regular.fa-heart
+                        else 
+                            i.fa-solid.fa-heart
+
                 .description
                     h1 #{movie.Name}
                     p.blur #{movie.engName}
@@ -36,3 +44,5 @@ block main
                                 a.thumbTile(href=`/watch/detail/${film._id}`)
                                     img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
                                 p.nameMovie #{film.Name}
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+    script(src='/js/detail.js')
