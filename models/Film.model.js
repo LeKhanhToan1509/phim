@@ -8,7 +8,7 @@ const filmSchema = new mongoose.Schema(
         Country: String,
         Runtime: String,
         ImageSrc: String,
-        Sgeneros: String,
+        Sgeneros: [String],
         Description: String,
         Like: {
             type: Boolean,

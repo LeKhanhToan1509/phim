@@ -1,6 +1,10 @@
 html {
     user-select: none;
 }
+::-webkit-scrollbar {
+    display: none;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -66,4 +70,15 @@ html {
     font-size: 16px;
     background-color: rgba(0, 0, 0, 0);
     cursor: pointer;
+}
+
+.separate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: white;
 }

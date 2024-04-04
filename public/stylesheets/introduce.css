@@ -1,0 +1,97 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    padding: 0 2%;
+    decoration: none;
+}
+
+body {
+    font-family: var(--fontOne);
+    background-color: #141414;
+}
+main {
+    max-height: 500px; /* Adjust as needed */
+}
+.headerLogo {
+    width: 120px;
+}
+
+.thumbSection {
+    padding-top: 3%;
+    color: var(--colorWhite);
+}
+
+.thumbTitle {
+    font-size: 24px;
+    line-height: 14px;
+    font-weight: 600;
+    margin: 0 4% 12px;
+    color: white;
+    font-weight: 900;
+    font-style: bold;
+    margin-bottom: 40px;
+}
+
+.thumbTiles.swiper-container {
+    padding: 0 4%;
+}
+
+.thumbTile {
+    width: 20%;
+}
+
+.thumbTile__image {
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    padding: 3px;
+}
+
+.thumbTile__image:hover {
+    border: 3px solid white;
+}
+
+.nameMovie {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 14px;
+    font-weight: 500;
+    color: white;
+    font-weight: 900;
+    font-style: bold;
+}
+
+.thumbTiles .swiper-button-prev,
+.thumbTiles .swiper-button-next {
+    width: 4%;
+    width: calc(4% - 5px);
+    background-color: rgba(20, 20, 20, 0.5);
+}
+
+.thumbTiles .swiper-button-prev {
+    left: 0;
+    border-top-right-radius: var(--tileBorderRadius);
+    border-bottom-right-radius: var(--tileBorderRadius);
+}
+
+@media screen and (min-width: 640px) {
+    .thumbTiles .swiper-button-prev::after,
+    .thumbTiles .swiper-button-next::after {
+        display: none;
+        font-size: 2.4vw;
+    }
+
+    .thumbTiles .swiper-button-prev:hover::after,
+    .thumbTiles .swiper-button-next:hover::after {
+        transform: scale(1.25);
+    }
+
+    .thumbTiles:hover .swiper-button-prev::after,
+    .thumbTiles:hover .swiper-button-next::after {
+        display: block;
+    }
+}
