@@ -15,7 +15,7 @@ module.exports.postLogin = async (req, res) => {
             res.cookie("token", user.token, { httpOnly: true });
             res.redirect(`/`);
         } else {
-            res.status(401).redirect("/login");
+            res.status(401).redirect("/account/login");
         }
     } catch (error) {
         console.error("Login error:", error);

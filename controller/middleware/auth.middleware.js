@@ -10,7 +10,7 @@ module.exports.requireAuth = async (req, res, next) => {
             .findOne({ token: token })
             .select("-password");
         if (!user) {
-            return res.redirect(`/account/login`);
+            return res.redirect(`/`);
         } else {
             res.locals.user = user;
         }
