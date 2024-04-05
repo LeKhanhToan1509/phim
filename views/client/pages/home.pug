@@ -27,8 +27,12 @@ block main
         a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
             span.carousel-control-next-icon(aria-hidden='true')
             span.sr-only Next
-    h1.separate Watch your favorite movies
-    
+    h1.separate
+        if user.like.length == 0 && user.lastWatch == 0
+            a(href = "/watch").separate__description You haven't liked any movies yet. Let's find your favorite movies
+        else
+            p.separate__description Here are your movies you care
+        
     body
         - var check = 0
         if  favouriteMovies.length > 0

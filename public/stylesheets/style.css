@@ -76,13 +76,12 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px;
+    margin-top: 40px;
     font-size: 32px;
     font-weight: 900;
     letter-spacing: 1px;
     color: white;
 }
-.separator {
-    height: 0.5px;
-    background-color: #423d3e; 
+a {
+    text-decoration: none;
 }
