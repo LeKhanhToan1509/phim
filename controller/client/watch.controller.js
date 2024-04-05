@@ -69,10 +69,13 @@ module.exports.watchFilm = async (req, res) => {
         const genre = await Category.findById(arr[i]);
         name[i] = genre.name;
     }
-    res.locals.user.lastWatch.push(movie._id);
-    res.locals.user.lastWatch = res.locals.user.lastWatch.slice(-10);
+    let newWatch = {
+        id: movie._id,
+        lastAt: new Date(),
+    };
+    res.locals.user.lastWatch.unshift(newWatch);
     await res.locals.user.save();
-
+    console.log(res.locals.user);
     let movies = await Film.find({})
         .limit(60)
         .skip(Math.floor(Math.random() * 100));
@@ -88,13 +91,14 @@ module.exports.watchFilm = async (req, res) => {
 module.exports.likeChange = async (req, res) => {
     const movie = await Film.findById(req.params.id);
     let liked;
-    if (res.locals.user.like.includes(movie._id)) {
-        res.locals.user.like = res.locals.user.like.filter(
-            (id) => id != movie._id
-        );
+    const likeIndex = res.locals.user.like.findIndex(
+        (like) => like.id == movie._id
+    );
+    if (likeIndex !== -1) {
+        res.locals.user.like.splice(likeIndex, 1);
         liked = false;
     } else {
-        res.locals.user.like.push(movie._id);
+        res.locals.user.like.unshift({ id: movie._id, likeAt: new Date() });
         liked = true;
     }
     await res.locals.user.save();

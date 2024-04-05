@@ -4,8 +4,18 @@ const { generateString } = require("../helper/gen.js");
 const accountSchema = new mongoose.Schema({
     email: String,
     password: String,
-    like: [String],
-    lastWatch: [String],
+    like: [
+        {
+            id: String,
+            likeAt: Date,
+        },
+    ],
+    lastWatch: [
+        {
+            id: String,
+            lastAt: Date,
+        },
+    ],
     token: {
         type: String,
         default: generateString(10),

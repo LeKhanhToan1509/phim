@@ -1,3 +1,4 @@
+link(rel="stylesheet", href="stylesheets/header.css")
 header.navbar
     .navbar-brand
         a(href = '/')
@@ -5,14 +6,24 @@ header.navbar
     nav.navbar-nav
         ul.nav-list
             li.nav-item
-                a.nav-link(href='/') Home
+                a(href = '/')
+                    i.fa-solid.fa-house
             li.nav-item
-                a.nav-link(href='/watch') Movies
+                a(href = '/watch')
+                    i.fa-solid.fa-film
+            li.nav-item
+                button.disable.nav-link(href='/watch/series') Series
+            li.nav-item
+                button.nav-link() |
+            li.nav-item
+                a(href='/user')
+                    i.fa-solid.fa-user
             if user
-                li.nav-item
+                li.btn.nav-item
                     i.fa-solid.fa-right-from-bracket.logout
             else 
-                li.nav-item
+                li.btn.nav-item
                     a.nav-link(href='/account/login') Login
 
         form.d-none.logoutForm(method="POST" action = "/account/logout")
+    script(src="/js/header.js") 

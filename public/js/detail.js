@@ -15,7 +15,6 @@ $(document).ready(function () {
             type: "POST",
             data: { like: likeStatus },
             success: function (response) {
-                console.log(response);
                 if (response.liked) {
                     $(".like").html('<i class="fa-solid fa-heart"></i>');
                     $("#like").data("like", true);
