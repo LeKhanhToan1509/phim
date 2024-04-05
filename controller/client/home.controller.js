@@ -1,5 +1,5 @@
 const Film = require("../../models/Film.model");
-
+const Series = require("../../models/Series.model");
 async function getMoviesByGenre(genreId) {
     return Film.find({ Sgeneros: { $in: [genreId] } }).limit(60);
 }
@@ -9,9 +9,12 @@ module.exports.index = async (req, res) => {
     last.sort((a, b) => b.lastAt - a.lastAt);
     last = last.slice(-30);
     console.log(last);
-    let lastWatch = await Film.find({
-        _id: { $in: last.map((watch) => watch.id) },
-    });
+    const [lastWatchFilms, lastWatchSeries] = await Promise.all([
+        Film.find({ _id: { $in: last.map((watch) => watch.id) } }),
+        Series.find({ _id: { $in: last.map((watch) => watch.id) } }),
+    ]);
+
+    let lastWatch = [...lastWatchFilms, ...lastWatchSeries];
 
     lastWatch.sort(
         (a, b) =>

@@ -75,7 +75,6 @@ module.exports.watchFilm = async (req, res) => {
     };
     res.locals.user.lastWatch.unshift(newWatch);
     await res.locals.user.save();
-    console.log(res.locals.user);
     let movies = await Film.find({})
         .limit(60)
         .skip(Math.floor(Math.random() * 100));

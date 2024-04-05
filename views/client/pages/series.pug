@@ -1,0 +1,84 @@
+extends ../layouts/default.pug
+
+block main
+    link(rel="stylesheet" href = "stylesheets/watch.css")
+    body
+        .movies 
+            h1.title Series
+            p.content Series are the series of films that are shown on television or on the internet, usually consisting of several episodes. Each episode is a separate story, but the episodes are connected by the main characters and the main story. The series can be divided into several genres such as romantic, honor, comedy, thriller, science, etc.
+            form.searchForm(action="/series" method="GET")
+                .input-group.mb-3
+                    input.form-control(type='text' placeholder="Search ..." aria-label="Recipient's username" aria-describedby='basic-addon2' name = "title")
+                    .input-group-append 
+                        button.btn.btn-outline-secondary(type='submit') Search
+
+        .listFilm
+            if movies.length > 0 && queryTitle
+                main
+                    section.thumbSection
+                        h2.thumbTitle Search for : #{queryTitle}  
+                        .thumbTiles.swiper-container
+                            .swiper-wrapper
+                                each film, index in movies
+                                    .swiper-slide
+                                        a.thumbTile(href=`/series/detail/${film._id}`)
+                                            img.thumbTile__image(src=film.ImageSrc alt=`${film.title}`)
+                                        p.nameMovie #{film.title}
+            
+            if queryTitle && movies.length == 0
+                h2.thumbTitle No results for :  #{queryTitle}
+            main
+                section.thumbSection
+                    h2.thumbTitle Romantic Movies
+                    .thumbTiles.swiper-container
+                        .swiper-wrapper
+                            each film, index in loveMovies
+                                .swiper-slide
+                                    a.thumbTile(href=`/series/detail/${film._id}`)
+                                        img.thumbTile__image(src=`${film.ImageSrc}` alt=`${film.title}`)
+                                    p.nameMovie #{film.title}
+
+            main
+                section.thumbSection
+                    h2.thumbTitle Honor Movies
+                    .thumbTiles.swiper-container
+                        .swiper-wrapper
+                            each film, index in honorMovies
+                                .swiper-slide
+                                    a.thumbTile(href=`/series/detail/${film._id}`)
+                                        img.thumbTile__image(src=`${film.ImageSrc}` alt=`${film.title}`)
+                                    p.nameMovie #{film.title}
+                
+            main
+                section.thumbSection
+                    h2.thumbTitle Comedy Movies
+                    .thumbTiles.swiper-container
+                        .swiper-wrapper
+                            each film, index in comedyMovies
+                                .swiper-slide
+                                    a.thumbTile(href=`/series/detail/${film._id}`)
+                                        img.thumbTile__image(src=`${film.ImageSrc}` alt=`${film.title}`)
+                                    p.nameMovie #{film.title}
+
+            main
+                section.thumbSection
+                    h2.thumbTitle Thriller Movies
+                    .thumbTiles.swiper-container
+                        .swiper-wrapper
+                            each film, index in thrillerMovies
+                                .swiper-slide
+                                    a.thumbTile(href=`/series/detail/${film._id}`)
+                                        img.thumbTile__image(src=`${film.ImageSrc}` alt=`${film.title}`)
+                                    p.nameMovie #{film.title}
+
+            main
+                section.thumbSection
+                    h2.thumbTitle Science Movies
+                    .thumbTiles.swiper-container
+                        .swiper-wrapper
+                            each film, index in scienceMovies
+                                .swiper-slide
+                                    a.thumbTile(href=`/series/detail/${film._id}`)
+                                        img.thumbTile__image(src=`${film.ImageSrc}` alt=`${film.title}`)
+                                    p.nameMovie #{film.title}
+            

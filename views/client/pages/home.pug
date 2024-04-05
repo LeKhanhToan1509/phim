@@ -44,9 +44,16 @@ block main
                         .swiper-wrapper
                             each film, index in favouriteMovies
                                 .swiper-slide
-                                    a.thumbTile(href=`/watch/detail/${film._id}`)
-                                        img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
-                                    p.nameMovie #{film.Name}
+                                    if film.Name
+                                        a.thumbTile(href=`/watch/detail/${film._id}`)
+                                            img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
+                                    else 
+                                        a.thumbTile(href=`/series/detail/${film._id}`)
+                                            img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
+                                    if film.Name
+                                        p.nameMovie #{film.Name}
+                                    else 
+                                        p.nameMovie #{film.title}
         if lastWatch.length > 0
             -check = 1
             main
@@ -56,10 +63,16 @@ block main
                         .swiper-wrapper
                             each film, index in lastWatch
                                 .swiper-slide
-                                    a.thumbTile(href=`/watch/detail/${film._id}`)
-                                        img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
-                                    p.nameMovie #{film.Name}    
-        
+                                    if film.Name
+                                        a.thumbTile(href=`/watch/detail/${film._id}`)
+                                            img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
+                                    else 
+                                        a.thumbTile(href=`/series/detail/${film._id}`)
+                                            img.thumbTile__image(src=film.ImageSrc alt=`${film.Name}`)
+                                    if film.Name
+                                        p.nameMovie #{film.Name}
+                                    else 
+                                        p.nameMovie #{film.title}
         
         
     

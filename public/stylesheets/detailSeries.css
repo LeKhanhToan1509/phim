@@ -31,10 +31,6 @@ html {
     letter-spacing: 1px;
 }
 button {
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
-    color: White;
     font-size: 16px;
     font-weight: 500;
     border: none;
@@ -115,3 +111,22 @@ li i:hover {
     background-color: transparent;
     color: white;
 }
+
+.part {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.choosePart {
+    color: white;
+    border: none;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    height: 30px;
+    width: 60px;
+    margin: 5px;
+    text-align: center;
+    flex: 1 0 calc(100%/12 - 10px); /* 12 buttons per row, subtract margin */
+}
+

@@ -1,0 +1,60 @@
+extends ../layouts/default.pug
+
+block main
+    link(rel="stylesheet" href = "/stylesheets/detailseries.css")
+    link(rel='stylesheet', href='/stylesheets/detail.css')
+    body
+        .movies 
+            h1.title Detail Series
+            p.content Detail of #{film.engName} series
+        input#id.d-none(type='text', name='movieId', value=`${film._id}` data-id = `${film._id}`)
+        .box
+            .movie-info
+                .img
+                    img(src=film.ImageSrc alt='Movie Poster' class='movie-poster')
+                    button.btn.btn-danger.like(type='button')
+                        if user.like.includes(film._id)
+                            input#like(type='hidden', name='like', value='true')
+                            i.fa-solid.fa-heart
+                        else 
+                            input#like(type='hidden', name='like', value='false')
+                            i.fa-regular.fa-heart
+
+                .description
+                    h1 #{film.title}
+                    p.blur #{film.engName}
+                    p Thể loại : #{name}
+                    p Trạng thái : #{film.status}
+                    p Ngày ra mắt : #{film.time}
+                    p Mô tả : #{film.des}
+                    .part
+                    each href, index in film.video_links  
+                        a(href=`/series/${film._id}/${index+1}`)
+                            button.btn.btn-danger.choosePart(type='button') Tập #{index+1}
+                
+    main
+        section.thumbSection
+            h2.thumbTitle Relative Movies
+            .thumbTiles.swiper-container
+                .swiper-wrapper
+                    each film, index in relative
+                        .swiper-slide
+                            a.thumbTile(href=`/series/detail/${film._id}`)
+                                img.thumbTile__image(src=film.ImageSrc alt=`${film.title}`)
+                            p.nameMovie #{film.title}
+    main
+        section.thumbSection
+            h2.thumbTitle Có thể bạn sẽ thích
+            .thumbTiles.swiper-container
+                .swiper-wrapper
+                    each film, index in films
+                        .swiper-slide
+                            a.thumbTile(href=`/series/detail/${film._id}`)
+                                img.thumbTile__image(src=film.ImageSrc alt=`${film.title}`)
+                            p.nameMovie #{film.title}
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+    script(src='/js/detailSeries.js')
+
+
+    
