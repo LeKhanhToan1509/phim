@@ -1,6 +1,7 @@
 extends ../layouts/default.pug
 
 block main 
+    .separator 
     body
         input#id.d-none(type='text', name='movieId', value=`${movie._id}` data-id = `${movie._id}`)
         .box

@@ -105,3 +105,31 @@ main {
 .img i {
     font-size: 24px;
 }
+button {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    color: White;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+li i {
+    font-size: 25px;
+    color: white;
+}
+li {
+    margin: 5px;
+}
+
+li i:hover {
+    color: #f1c40f;
+}
+
