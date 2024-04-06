@@ -8,7 +8,6 @@ module.exports.index = async (req, res) => {
     last = res.locals.user.lastWatch;
     last.sort((a, b) => b.lastAt - a.lastAt);
     last = last.slice(-30);
-    console.log(last);
     const [lastWatchFilms, lastWatchSeries] = await Promise.all([
         Film.find({ _id: { $in: last.map((watch) => watch.id) } }),
         Series.find({ _id: { $in: last.map((watch) => watch.id) } }),
@@ -21,6 +20,7 @@ module.exports.index = async (req, res) => {
             last.findIndex((watch) => watch.id === a._id.toString()) -
             last.findIndex((watch) => watch.id === b._id.toString())
     );
+    console.log(lastWatch);
 
     let like = res.locals.user.like;
     like.sort((a, b) => b.likeAt - a.likeAt);
