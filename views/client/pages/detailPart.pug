@@ -3,7 +3,140 @@ extends ../layouts/default.pug
 
 block main
     head
-        link(rel="stylesheet" href = "/stylesheets/detailseries.css")
+        style.
+            body {
+                color: white;
+            }
+            html {
+                user-select: none;
+            }
+            ::-webkit-scrollbar {
+                display: none;
+            }
+
+            .navbar {
+                display: flex;
+                justify-content: space-betwee2n;
+                align-items: center;
+                background-color: #141414;
+                padding: 10px 20px;
+            }
+
+            .navbar-brand img {
+                height: 50px;
+            }
+            .logout:hover {
+                color: red;
+                cursor: pointer;
+            }
+            .nav-list {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+            button {
+                font-size: 16px;
+                font-weight: 500;
+                border: none;
+                cursor: pointer;
+            }
+            .navbar {
+                display: flex;
+                align-items: center;
+                color: white;
+            }
+
+            li i {
+                font-size: 25px;
+                color: white;
+            }
+            li {
+                margin: 5px;
+            }
+
+            li i:hover {
+                color: #f1c40f;
+            }
+
+            .nav-list .nav-item {
+                color: white;
+                font-size: 24px;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .nav-item a {
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+            }
+
+            .movies {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .title {
+                color: white;
+                font-size: 2.5em;
+                text-align: center;
+                margin-top: 15px;
+                font-weight: 900;
+                letter-spacing: 1px;
+            }
+            .content {
+                color: white;
+                font-size: 1em;
+                text-align: center;
+                margin-top: 15px;
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            .searchForm {
+                justify-content: center;
+                align-items: center;
+                width: 400px;
+                height: 45px;
+            }
+
+            .form-control {
+                flex-grow: 1;
+            }
+            .form-control {
+                background-color: transparent;
+                color: white;
+            }
+
+            .form-control:focus {
+                outline: none;
+                background-color: transparent;
+                color: white;
+            }
+
+            .part {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .choosePart {
+                color: white;
+                border: none;
+                font-size: 12px;
+                font-weight: 700;
+                cursor: pointer;
+                height: 30px;
+                width: 60px;
+                margin: 5px;
+                text-align: center;
+                flex: 1 0 calc(100%/12 - 10px); 
+            }
+
+
     body
         input#id.d-none(type='text', name='movieId', value=`${film._id}` data-id = `${film._id}`)
         .box
