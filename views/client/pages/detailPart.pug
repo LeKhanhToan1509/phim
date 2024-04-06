@@ -2,7 +2,8 @@ extends ../layouts/default.pug
 
 
 block main
-    link(rel="stylesheet" href = "stylesheets/detailseries.css")
+    head
+        link(rel="stylesheet" href = "stylesheets/detailseries.css")
     body
         input#id.d-none(type='text', name='movieId', value=`${film._id}` data-id = `${film._id}`)
         .box
