@@ -7,7 +7,7 @@ async function getMoviesByGenre(genreId) {
 }
 module.exports.index = async (req, res) => {
     const options = {
-        keys: ["title"],
+        keys: ["title", "engName"],
     };
     movies = await Series.find({});
     const fuse = new Fuse(movies, options);
